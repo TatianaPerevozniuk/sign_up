@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/sign_up/static/css/main.09db790e.chunk.css",
+    "main.js": "/sign_up/static/js/main.c1fd92a7.chunk.js",
+    "main.js.map": "/sign_up/static/js/main.c1fd92a7.chunk.js.map",
+    "runtime-main.js": "/sign_up/static/js/runtime-main.d26f1534.js",
+    "runtime-main.js.map": "/sign_up/static/js/runtime-main.d26f1534.js.map",
+    "static/js/2.b58e5875.chunk.js": "/sign_up/static/js/2.b58e5875.chunk.js",
+    "static/js/2.b58e5875.chunk.js.map": "/sign_up/static/js/2.b58e5875.chunk.js.map",
+    "static/js/3.cd04f372.chunk.js": "/sign_up/static/js/3.cd04f372.chunk.js",
+    "static/js/3.cd04f372.chunk.js.map": "/sign_up/static/js/3.cd04f372.chunk.js.map",
+    "index.html": "/sign_up/index.html",
+    "static/css/main.09db790e.chunk.css.map": "/sign_up/static/css/main.09db790e.chunk.css.map",
+    "static/js/2.b58e5875.chunk.js.LICENSE.txt": "/sign_up/static/js/2.b58e5875.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/sign_up/static/media/padlock.9fc8846a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d26f1534.js",
+    "static/js/2.b58e5875.chunk.js",
+    "static/css/main.09db790e.chunk.css",
+    "static/js/main.c1fd92a7.chunk.js"
+  ]
+}
