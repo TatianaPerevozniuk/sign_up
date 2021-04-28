@@ -34,7 +34,8 @@ class SignUp extends Component{
                 lastName: "",
                 email: "",
                 password: ""
-            }
+            },
+            checked: false,
         }
     }
 
@@ -47,7 +48,8 @@ class SignUp extends Component{
             First Name: ${this.state.firstName}
             Last Name: ${this.state.lastName}
             Email: ${this.state.email}
-            Password: ${this.state.password}`)
+            Password: ${this.state.password}
+            Checked: ${this.state.checked}`)
         } else {
             console.log('Form invalid - display error message')
         }
@@ -56,7 +58,7 @@ class SignUp extends Component{
     handleChange = e => {
         e.preventDefault();
 
-        const { name, value } = e.target;
+        const { name, value, type,checked } = e.target;
         let formErrors = this.state.formErrors;
 
         switch (name) {
@@ -88,8 +90,12 @@ class SignUp extends Component{
                 break;
         }
 
-        this.setState({formErrors, [name]: value}, () => console.log(this.state));
+        const value_ = type === 'checkbox' ? checked : value;
+
+        this.setState({formErrors, [name]: value_}, () => console.log(this.state));
+        localStorage.setItem(name, value_);
     }
+
 
     render() {
         const { formErrors } = this.state;
@@ -104,7 +110,6 @@ class SignUp extends Component{
                             name='firstName'
                             type='text'
                             placeholder='First Name *'
-                            noValidate
                             onChange={this.handleChange}
                         />
                         {formErrors.firstName.length > 0 && (
@@ -117,7 +122,6 @@ class SignUp extends Component{
                             name='lastName'
                             type='text'
                             placeholder='Last Name *'
-                            noValidate
                             onChange={this.handleChange}
                         />
                         {formErrors.lastName.length > 0 && (
@@ -130,7 +134,6 @@ class SignUp extends Component{
                             name='email'
                             type='email'
                             placeholder='Email *'
-                            noValidate
                             onChange={this.handleChange}
                         />
                         {formErrors.email.length > 0 && (
@@ -143,7 +146,6 @@ class SignUp extends Component{
                             name='password'
                             type='password'
                             placeholder='Password *'
-                            noValidate
                             onChange={this.handleChange}
                         />
                         {formErrors.password.length > 0 && (
@@ -151,7 +153,12 @@ class SignUp extends Component{
                         )}
                     </div>
                     <div className="form_checkbox_block">
-                        <input type="checkbox" id="custom-checkbox" className="form_checkbox"/>
+                        <input type="checkbox"
+                               name='checked'
+                               checked={this.state.checked}
+                               onChange={this.handleChange}
+                               id="custom-checkbox"
+                               className="form_checkbox" />
                         <label htmlFor="custom-checkbox">I want to receive inspiration, markting promotions and updates
                             via email</label>
                     </div>
