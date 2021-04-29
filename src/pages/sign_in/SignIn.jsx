@@ -8,7 +8,8 @@ class SignIn extends Component {
         this.state = {
             email: '',
             password: '',
-            rememberMe: false
+            rememberMe: false,
+            error: ''
         }
     }
 
@@ -16,22 +17,29 @@ class SignIn extends Component {
     handleChange = (e) => {
         const {name, type, checked, value} = e.target;
         const value_ = type === 'checkbox' ? checked : value;
-
         this.setState({[name]: value_});
+
+        console.log(this.state);
     };
 
     handleFormSubmit = () => {
-        const { email, password, rememberMe } = this.state;
+        const {email, password, rememberMe} = this.state;
         localStorage.setItem('rememberMe', rememberMe);
-        localStorage.setItem('email', rememberMe ? email : '');
-        localStorage.setItem('password', rememberMe ? password : '');
+
+        if (email !== localStorage.getItem('email') || password !== localStorage.getItem('password')) {
+            this.setState({error: 'INVALID DATA'});
+        }
+
+        // localStorage.setItem('rememberMe', rememberMe);
+        // localStorage.setItem('email', rememberMe ? email : '');
+        // localStorage.setItem('password', rememberMe ? password : '');
     };
 
     componentDidMount() {
         const rememberMe = localStorage.getItem('rememberMe') === 'true';
         const email = rememberMe ? localStorage.getItem('email') : '';
         const password = rememberMe ? localStorage.getItem('password') : '';
-        this.setState({email, password, rememberMe });
+        this.setState({email, password, rememberMe});
     }
 
     render() {
@@ -70,6 +78,8 @@ class SignIn extends Component {
                     </div>
                     <div className="submission_btn">
                         <button type='submit'>Sign In</button>
+                        {this.state.error.length > 0 && (<span>{this.state.error}</span>)}
+
                     </div>
                     <div className="form_links">
                         <Link to="/sign_up/">
